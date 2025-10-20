@@ -14,13 +14,13 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Synchronization_In_Java {
-    static int sum = 0;                         // shared variable that both threads will update
-    static Lock key = new ReentrantLock();      // creates a reentrantlock object
+    int sum = 0;                         // shared variable that both threads will update
     
-    public static void main(String[] args) {
+    public void main(String[] args) {
         int[] Array = new int[100];     // array of 100 integers
         int[] firstHalf;                // array for first 50 elements
         int[] secondHalf;               // array for second 50 elements
+        Lock key = new ReentrantLock();      // creates a reentrantlock object
         
         // Generates an Array whose 100 elements are 1,2, 3,... 100
         for (int i = 0; i < Array.length; i++) {
@@ -67,7 +67,7 @@ public class Synchronization_In_Java {
         
     }
     
-    static class sumThread implements Runnable {
+    class sumThread implements Runnable {
         int[] toDoArray;        // array segment assigned to this thread.
         Lock key;               // shared key passed from main class
         
